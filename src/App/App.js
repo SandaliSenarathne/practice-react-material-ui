@@ -2,11 +2,13 @@ import './App.css';
 
 import SideMenu from '../Components/SideMenu'
 import React from 'react';
-import { CssBaseline, makeStyles } from '@material-ui/core';
+import { CssBaseline, makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core';
 import Header from '../Components/Header';
+
 
 // Icons
 import Employees from '../Pages/Employees/Employees';
+import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   appMain:{
@@ -15,17 +17,45 @@ const useStyles = makeStyles({
   }
 })
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#333996",
+      light: '#3c44b126'
+    },
+    secondary: {
+      main: "#f83245",
+      light: '#f8324526'
+    },
+    background: {
+      default: "#f4f5fd"
+    },
+  },
+  overrides:{
+    MuiAppBar:{
+      root:{
+        transform:'translateZ(0)'
+      }
+    }
+  },
+  props:{
+    MuiIconButton:{
+      disableRipple:true
+    }
+  }
+})
+
 function App() {
   const classes = useStyles();
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <SideMenu/>
       <div className={classes.appMain}>
         <Header/>
         <Employees/>
       </div>
       <CssBaseline/>
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
 

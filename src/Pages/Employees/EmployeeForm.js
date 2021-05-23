@@ -1,6 +1,8 @@
 import { FormControl, FormControlLabel, FormLabel, Grid, Radio, TextField } from '@material-ui/core';
 import React,{useState, useEffect} from 'react';
+import Button from '../../Components/Controls/Button';
 import Checkbox from '../../Components/Controls/Checkbox';
+import DatePicker from '../../Components/Controls/DatePicker';
 import Input from '../../Components/Controls/Input';
 import RadioGroup from '../../Components/Controls/RadioGroup';
 import Select from '../../Components/Controls/Select';
@@ -38,15 +40,27 @@ function EmployeeForm(props) {
             <Grid container>
                 <Grid item xs={6}>
                     <Input
-                        label="Email"
-                        name="email"
-                        value={values.email}
+                        label="Full Name"
+                        name="fullName"
+                        value={values.fullName}
                         onChange={handleInputChange}
                     />
                     <Input
                         label="Email"
                         name="email"
                         value={values.email}
+                        onChange={handleInputChange}
+                    />
+                    <Input
+                        label="Mobile"
+                        name="mobile"
+                        value={values.mobile}
+                        onChange={handleInputChange}
+                    />
+                    <Input
+                        label="City"
+                        name="city"
+                        value={values.city}
                         onChange={handleInputChange}
                     />
                 </Grid>
@@ -65,13 +79,28 @@ function EmployeeForm(props) {
                         onChange={handleInputChange}
                         options={departmetIDs}
                     />
+                    <DatePicker
+                        name="hireDate"
+                        label="Hire Date"
+                        value={values.hireDate}
+                        onChange={handleInputChange}
+                    />
                     <Checkbox
                         name="isPermanent"
                         label="Permanent Employee"
                         value={values.isPermanent}
                         onChange={handleInputChange}
                     />
-
+                    <div>
+                        <Button
+                            type="submit"
+                            text="Submit"
+                        />
+                        <Button
+                            text="Reset"
+                            color="default"
+                        />
+                    </div>
                 </Grid>
             </Grid>
         </Form>
